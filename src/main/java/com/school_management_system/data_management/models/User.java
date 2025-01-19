@@ -2,6 +2,7 @@ package com.school_management_system.data_management.models;
 
 import org.apache.solr.client.solrj.beans.Field;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.solr.core.mapping.Dynamic;
 import org.springframework.data.solr.core.mapping.SolrDocument;
 
 import java.util.List;
@@ -13,7 +14,8 @@ public class User {
     @Field
     private String username;
 
-    @Field
+    @Field("name")
+    @SortableField
     private String name;
 
     @Field
@@ -22,13 +24,13 @@ public class User {
     @Field
     private String userClass;
 
-    @Field
+    @Field("house")
     private String house;
 
     @Field
     private List<Seat> seatAllocated;
 
-    @Field
+    @Field("marks")
     private Map<String, String> marks;
 
     // Getters and Setters

@@ -1,0 +1,15 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: data-management
+  security:
+    enabled: false
+  data:
+    solr:
+      host: http://localhost:8983/solr
+      repositories:
+        enabled: true
+
+

@@ -6,7 +6,10 @@ import org.springframework.stereotype.Service;
 import com.school_management_system.data_management.models.User;
 import com.school_management_system.data_management.repo.UserRepository;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @Service
 public class UserService {
@@ -22,6 +25,10 @@ public class UserService {
         return userRepository.findByName(name);
     }
 
+    public List<User> getUserByHouse(String house) {
+        return userRepository.findByHouse(house);
+    }
+
     public void updateScore(String studentName, String subjectName, Integer newScore) {
         User user = userRepository.findByName(studentName);
         if(user!=null){
@@ -31,6 +38,25 @@ public class UserService {
             throw new RuntimeException("User not found");
         }
         
+    }
+
+    public List<User> getAllUsers() {
+        try {
+            System.out.println("Fetching all users from repository");
+            List<User> users = StreamSupport
+                .stream(userRepository.findAll().spliterator(), false)
+                .collect(Collectors.toList());
+            System.out.println("Found " + users.size() + " users");
+            return users;
+        } catch (Exception e) {
+            System.err.println("Error in getAllUsers: " + e.getMessage());
+            e.printStackTrace();
+            throw new RuntimeException("Failed to fetch users", e);
+        }
+    }
+
+    public List<User> getAllUsersSorted() {
+        return userRepository.findAllByOrderByNameAsc();
     }
 }
 
