@@ -10,6 +10,7 @@
 /Users/saurabhsinha/Saurabh/github-repo/school-management-system-backend/src/main/java/com/school_management_system/data_management/dto/AuthRequest.java
 /Users/saurabhsinha/Saurabh/github-repo/school-management-system-backend/src/main/java/com/school_management_system/data_management/impl/PrincipalServiceImpl.java
 /Users/saurabhsinha/Saurabh/github-repo/school-management-system-backend/src/main/java/com/school_management_system/data_management/SolrConfig.java
+/Users/saurabhsinha/Saurabh/github-repo/school-management-system-backend/src/main/java/com/school_management_system/data_management/repo/SolrQuery.java
 /Users/saurabhsinha/Saurabh/github-repo/school-management-system-backend/src/main/java/com/school_management_system/data_management/repo/UserRepository.java
 /Users/saurabhsinha/Saurabh/github-repo/school-management-system-backend/src/main/java/com/school_management_system/data_management/DataManagementApplication.java
 /Users/saurabhsinha/Saurabh/github-repo/school-management-system-backend/src/main/java/com/school_management_system/data_management/impl/StudentServiceImpl.java

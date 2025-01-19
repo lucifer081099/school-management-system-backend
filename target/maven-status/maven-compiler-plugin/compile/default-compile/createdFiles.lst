@@ -18,3 +18,4 @@ com/school_management_system/data_management/models/User.class
 com/school_management_system/data_management/controller/StudentController.class
 com/school_management_system/data_management/dto/AuthRequest.class
 com/school_management_system/data_management/impl/StudentServiceImpl.class
+com/school_management_system/data_management/repo/SolrQuery.class

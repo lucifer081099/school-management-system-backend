@@ -6,13 +6,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-import org.apache.http.HttpStatus;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.school_management_system.data_management.dto.AuthRequest;
-import com.school_management_system.data_management.dto.AuthResponse;
 import com.school_management_system.data_management.models.Credential;
 import com.school_management_system.data_management.service.CredentialService;
 import com.school_management_system.data_management.service.UserService;
@@ -32,7 +28,7 @@ public class PrincipalController {
     private UserService userService;
    
 
-    // Endpoint to enroll a student in a subject
+    // Endpoint to create a student and principal database
     @RequestMapping("/enroll")
     public void enrollInSubject() { 
         System.out.println("Student ID: ");
@@ -42,6 +38,25 @@ public class PrincipalController {
         credential.setPassword("password");
         credential.setRole("principal");
         credentialService.saveCredential(credential);
+
+        List<User> usersRed = userService.getUserByHouse("Red");
+        List<User> usersBlue = userService.getUserByHouse("Blue");
+        List<User> usersGreen = userService.getUserByHouse("Green");
+        List<User> usersYellow = userService.getUserByHouse("Yellow");
+        List<User> users = new ArrayList<>();
+        users.addAll(usersRed);
+        users.addAll(usersBlue);
+        users.addAll(usersGreen);
+        users.addAll(usersYellow);
+        for(int i=0;i<users.size();i++){
+            Credential credential1 = new Credential();
+            credential1.setName(users.get(i).getName());
+            credential1.setUsername(users.get(i).getUsername());
+            credential1.setPassword(users.get(i).getUsername());
+            credential1.setRole("student");
+            credentialService.saveCredential(credential1);
+        }
+
 
         Credential credential2 = credentialService.getCredentialByUsername("johndoe");
         System.out.println(credential2.getName());

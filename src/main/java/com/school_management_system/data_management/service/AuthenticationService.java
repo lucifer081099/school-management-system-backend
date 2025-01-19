@@ -15,7 +15,7 @@ public class AuthenticationService {
     public AuthResponse authenticate(AuthRequest request) {
         Credential cred= credentialService.getCredentialByUsername(request.getUsername());
         if(cred!=null){
-            if(cred.getPassword().equals(request.getPassword()) && cred.getRole().equals(request.getRole())){
+            if(cred.getPassword().equalsIgnoreCase(request.getPassword()) && cred.getRole().equalsIgnoreCase(request.getRole())){
                 AuthResponse response = new AuthResponse();
                 response.setAuthenticated(true);
                 response.setMessage("Authentication successful");

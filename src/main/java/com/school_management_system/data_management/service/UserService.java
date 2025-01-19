@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 import com.school_management_system.data_management.models.User;
 import com.school_management_system.data_management.repo.UserRepository;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;

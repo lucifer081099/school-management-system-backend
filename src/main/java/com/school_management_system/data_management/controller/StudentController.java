@@ -1,11 +1,12 @@
 package com.school_management_system.data_management.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.school_management_system.data_management.models.Credential;
+import com.school_management_system.data_management.models.User;
 import com.school_management_system.data_management.service.CredentialService;
+import com.school_management_system.data_management.service.UserService;
 
 
 @RestController
@@ -15,6 +16,9 @@ public class StudentController {
     
     @Autowired
     private CredentialService credentialService;
+
+    @Autowired
+    private UserService userService;
    
    
 
@@ -34,5 +38,15 @@ public class StudentController {
         Credential credential2 = credentialService.getCredentialByUsername("johndoe");
         System.out.println(credential2.getName());
     }
+
+    @GetMapping("/details")
+    public User studentDetails(@RequestParam String studentName) { 
+        System.out.println("student detail fetching ...");
+        User user = userService.getUserByName(studentName);
+        System.out.println("student detail fetched");
+        return user;
+    }
+
+    
     
 }

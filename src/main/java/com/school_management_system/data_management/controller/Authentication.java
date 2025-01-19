@@ -27,6 +27,7 @@ public class Authentication {
         request.setUsername(username);
         request.setPassword(password);
         request.setRole(role);
+        System.out.println("Authenticating user: " + username+ " with role: "+role+ " and password: "+password);
         return authenticationService.authenticate(request);
     }
 }

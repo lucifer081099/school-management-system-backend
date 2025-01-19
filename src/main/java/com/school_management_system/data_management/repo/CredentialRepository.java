@@ -5,7 +5,6 @@ import org.springframework.stereotype.Repository;
 
 import com.school_management_system.data_management.models.Credential;
 
-import java.util.List;
 
 @Repository
 public interface CredentialRepository extends SolrCrudRepository<Credential, String> {
