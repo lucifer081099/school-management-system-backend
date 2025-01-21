@@ -29,12 +29,35 @@ public class UserService {
     }
 
     public void updateScore(String studentName, String subjectName, Integer newScore) {
+        System.out.println("Subject Name: " + subjectName);
         User user = userRepository.findByName(studentName);
+        System.out.println("user: " + user.toString());
         if(user!=null){
-            user.getMarks().put(subjectName, newScore.toString());
+            if(subjectName.equals("Mathematics")){
+                System.out.println("Enrolling student in Mathematics");
+                user.setMathematics(String.valueOf(newScore));
+            }else if(subjectName.equals("Science")){
+                System.out.println("Enrolling student in Science");
+                user.setScience(String.valueOf(newScore));
+
+            }else if(subjectName.equals("English")){
+                System.out.println("Enrolling student in English");
+                user.setEnglish(String.valueOf(newScore));
+
+            }else if(subjectName.equals("History")){
+                System.out.println("Enrolling student in History");
+
+                user.setHistory(String.valueOf(newScore));
+            }else if(subjectName.equals("Hindi")){
+                System.out.println("Enrolling student in Hindi");
+                user.setHindi(String.valueOf(newScore));
+            }else if(subjectName.equals("Economics")){   
+                System.out.println("Enrolling student in Economics"); 
+                user.setEconomics(String.valueOf(newScore));
+            }
+            System.out.println("user"+user.toString());
+        
             userRepository.save(user);
-        }else{
-            throw new RuntimeException("User not found");
         }
         
     }

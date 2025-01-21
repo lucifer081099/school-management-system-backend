@@ -13,7 +13,6 @@ import com.school_management_system.data_management.models.Credential;
 import com.school_management_system.data_management.service.CredentialService;
 import com.school_management_system.data_management.service.UserService;
 import com.school_management_system.data_management.models.User;
-import com.school_management_system.data_management.models.User.Seat;
 
 
 @RestController
@@ -33,8 +32,8 @@ public class PrincipalController {
     public void enrollInSubject() { 
         System.out.println("Student ID: ");
         Credential credential = new Credential();
-        credential.setName("John Doe");
-        credential.setUsername("johndoe");
+        credential.setName("principal");
+        credential.setUsername("principal");
         credential.setPassword("password");
         credential.setRole("principal");
         credentialService.saveCredential(credential);
@@ -58,7 +57,7 @@ public class PrincipalController {
         }
 
 
-        Credential credential2 = credentialService.getCredentialByUsername("johndoe");
+        Credential credential2 = credentialService.getCredentialByUsername("principal");
         System.out.println(credential2.getName());
 
 
@@ -72,23 +71,25 @@ public class PrincipalController {
         String[] classes = {"1A", "1B", "2A", "2B", "3A", "3B"};
         
         try {
-            for(int i = 0; i < 100; i++) {
+            for(int i = 0; i < 125; i++) {
                 User user = new User();
-                user.setName("Student" + i);
+                user.setName("student" + i);
                 user.setUsername("student" + i);
                 user.setRollNumber(String.format("%03d", i + 1));
                 user.setUserClass(classes[random.nextInt(classes.length)]);
                 user.setHouse(houses[random.nextInt(houses.length)]);
                 
-                List<Seat> seats = new ArrayList<>();
-                user.setSeatAllocated(seats);
-                
-                Map<String, String> marks = new HashMap<>();
-                marks.put("Mathematics", String.valueOf(60 + random.nextInt(41)));
-                marks.put("Science", String.valueOf(60 + random.nextInt(41)));
-                marks.put("English", String.valueOf(60 + random.nextInt(41)));
-                user.setMarks(marks);
-                
+                user.setClassAllocated(null);
+                user.setSeatColumn(null);
+                user.setSeatRow(null);
+                user.setEnglish(String.valueOf(60 + random.nextInt(41)));
+                user.setHindi(String.valueOf(60 + random.nextInt(41)));
+                user.setMathematics(String.valueOf(60 + random.nextInt(41)));
+                user.setScience(null);
+                user.setHistory(null);
+                user.setEconomics(null);
+
+                System.out.println(user.toString());
                 userService.saveUser(user);
             }
             

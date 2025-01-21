@@ -11,11 +11,12 @@ import java.util.Map;
 @SolrDocument(collection = "user")
 public class User {
     @Id
+    private String id;
+
     @Field
     private String username;
 
-    @Field("name")
-    @SortableField
+    @Field
     private String name;
 
     @Field
@@ -24,16 +25,88 @@ public class User {
     @Field
     private String userClass;
 
-    @Field("house")
+    @Field
     private String house;
 
     @Field
-    private List<Seat> seatAllocated;
+    private String classAllocated;
 
-    @Field("marks")
-    private Map<String, String> marks;
+    @Field
+    private String seatRow;
+
+    @Field
+    private String seatColumn;
+
+
+
+    // English hindi maths scienece history economics
+    @Field
+    private String english;
+
+    @Field
+    private String hindi;
+
+    @Field
+    private String mathematics;
+
+    @Field
+    private String science;
+
+    @Field
+    private String history;
+
+    @Field
+    private String economics;
 
     // Getters and Setters
+
+    public String getEnglish() {
+        return english;
+    }
+
+    public void setEnglish(String english) {
+        this.english = english;
+    }
+
+    public String getHindi() {
+        return hindi;
+    }
+
+    public void setHindi(String hindi) {
+        this.hindi = hindi;
+    }
+
+    public String getMathematics() {
+        return mathematics;
+    }
+
+    public void setMathematics(String mathematics) {
+        this.mathematics = mathematics;
+    }
+
+    public String getScience() {
+        return science;
+    }
+
+    public void setScience(String science) {
+        this.science = science;
+    }
+
+    public String getHistory() {
+        return history;
+    }
+
+    public void setHistory(String history) {
+        this.history = history;
+    }
+
+    public String getEconomics() {
+        return economics;
+    }
+
+    public void setEconomics(String economics) {
+        this.economics = economics;
+    }
 
     public String getUsername() {
         return username;
@@ -76,62 +149,30 @@ public class User {
         this.house = house;
     }
 
-    public List<Seat> getSeatAllocated() {
-        return seatAllocated;
+    public String getClassAllocated() {
+        return classAllocated;
     }
 
-    public void setSeatAllocated(List<Seat> seatAllocated) {
-        this.seatAllocated = seatAllocated;
+    public void setClassAllocated(String classAllocated) {
+        this.classAllocated = classAllocated;
     }
 
-    public Map<String, String> getMarks() {
-        return marks;
+    public String getSeatRow() {
+        return seatRow;
     }
 
-    public void setMarks(Map<String, String> marks) {
-        this.marks = marks;
+    public void setSeatRow(String seatRow) {
+        this.seatRow = seatRow;
     }
 
-    // Nested class for seat allocation
-    public static class Seat {
-        private String classAllocated;
-        private String seatRow;
-        private String seatColumn;
-
-        // Getters and Setters
-        public String getClassAllocated() {
-            return classAllocated;
-        }
-
-        public void setClassAllocated(String classAllocated) {
-            this.classAllocated = classAllocated;
-        }
-
-        public String getSeatRow() {
-            return seatRow;
-        }
-
-        public void setSeatRow(String seatRow) {
-            this.seatRow = seatRow;
-        }
-
-        public String getSeatColumn() {
-            return seatColumn;
-        }
-
-        public void setSeatColumn(String seatColumn) {
-            this.seatColumn = seatColumn;
-        }
-
-        @Override
-        public String toString() {
-            return "Seat{" +
-                    "classAllocated='" + classAllocated + '\'' +
-                    ", seatRow='" + seatRow + '\'' +
-                    ", seatColumn='" + seatColumn + '\'' +
-                    '}';
-        }
+    public String getSeatColumn() {
+        return seatColumn;
     }
+
+    public void setSeatColumn(String seatColumn) {
+        this.seatColumn = seatColumn;
+    }
+ 
 
     @Override
     public String toString() {
@@ -141,8 +182,15 @@ public class User {
                 ", rollNumber='" + rollNumber + '\'' +
                 ", userClass='" + userClass + '\'' +
                 ", house='" + house + '\'' +
-                ", seatAllocated=" + seatAllocated +
-                ", marks=" + marks +
+                ", classAllocated='" + classAllocated + '\'' +
+                ", seatRow='" + seatRow + '\'' +
+                ", seatColumn='" + seatColumn + '\'' +
+                ", english='" + english + '\'' +
+                ", hindi='" + hindi + '\'' +
+                ", mathematics='" + mathematics + '\'' +
+                ", science='" + science + '\'' +
+                ", history='" + history + '\'' +
+                ", economics='" + economics + '\''+
                 '}';
     }
 }

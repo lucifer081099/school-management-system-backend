@@ -11,6 +11,7 @@ import java.util.List;
 @Repository
 public interface UserRepository extends SolrCrudRepository<User, String> {
     User findByName(String name);
+    
     List<User> findByHouse(String house);
 
     @Query("*:*")
