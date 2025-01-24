@@ -62,6 +62,17 @@ public class UserService {
         
     }
 
+    public void allocateSeat(String studentUsername, String classroomName, Integer seatRow, Integer seatColumn) {
+        User user = userRepository.findByName(studentUsername);
+        System.out.println("Classroom Name: " + classroomName+ " Seat Row: "+seatRow+ " Seat Column: "+seatColumn);
+        if(user!=null){
+            user.setClassAllocated(classroomName);
+            user.setSeatRow(String.valueOf(seatRow));
+            user.setSeatColumn(String.valueOf(seatColumn));
+            userRepository.save(user);
+        }
+    }
+
     public List<User> getAllUsers() {
         try {
             System.out.println("Fetching all users from repository");

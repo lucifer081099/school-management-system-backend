@@ -106,6 +106,14 @@ public class PrincipalController {
         userService.updateScore(studentName, subjectName, score);
     }
 
+    @PostMapping("/allocate-seat")
+    public void allocateSeat(@RequestParam String studentUsername,@RequestParam String classroomName, 
+                                   @RequestParam Integer seatRow,@RequestParam Integer seatColumn) throws Exception {
+
+        System.out.println("inside allocate seat"+studentUsername+classroomName+seatRow+seatColumn);
+        userService.allocateSeat(studentUsername, classroomName, seatRow, seatColumn);
+    }
+
     @GetMapping("/get-student-scores")
     public List<User> getScores() throws Exception {
         try {
